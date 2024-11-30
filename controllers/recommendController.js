@@ -10,7 +10,6 @@ const getRecommendations = async (req, res) => {
     }
 };
 
-// Controller để lấy danh sách sản phẩm
 const getTestrecommendProducts = (req, res) => {
     const data = recommendService.getTestRecommendProducts();
     res.json(data);

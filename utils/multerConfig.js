@@ -3,7 +3,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Thư mục lưu trữ
+    cb(null, "uploads/"); 
   },
   filename: (req, file, cb) => {
     const uniqueName = Date.now() + path.extname(file.originalname);
@@ -21,7 +21,7 @@ const multerConfig = {
       cb(new Error("Only .jpeg, .png, .jpg formats are allowed"), false);
     }
   },
-  limits: { fileSize: 5 * 1024 * 1024 }, // Giới hạn file 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, 
 };
 
 module.exports = multerConfig;

@@ -3,7 +3,7 @@ const seedData = require('../models/recommendModel');
 
 const getRecommendedProducts = async () => {
     try {
-        // Fetch all recommended products from the database
+        
         const data = await Recommend.find({});
         return data;
     } catch (error) {
@@ -11,7 +11,7 @@ const getRecommendedProducts = async () => {
     }
 };
 
-// Service để lấy danh sách sản phẩm phổ biến
+
 const getTestRecommendProducts = () => {
     return seedData;
 };

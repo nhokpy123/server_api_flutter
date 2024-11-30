@@ -27,32 +27,62 @@ const Product = require('../models/productModel');
 
 //api
 class ProductService {
-  // Tạo sản phẩm mới
   async createProduct(data) {
-    const product = new Product(data); // Sử dụng biến khác để tránh trùng tên
-    return await product.save(); // Lưu sản phẩm vào cơ sở dữ liệu
+    const product = new Product(data); 
+    return await product.save(); 
   }
 
-  // Lấy danh sách tất cả sản phẩm
+ 
   async getAllProducts() {
-    return await Product.find(); // Truy vấn tất cả sản phẩm
+    return await Product.find(); 
   }
 
-  // Lấy thông tin sản phẩm theo ID
+  
   async getProductById(id) {
-    return await Product.findById(id); // Tìm sản phẩm theo ID
+    return await Product.findById(id);
   }
 
-  // Cập nhật thông tin sản phẩm
-  async updateProduct(id, data) {
-    return await Product.findByIdAndUpdate(id, data, { new: true }); // Cập nhật và trả về sản phẩm mới
-  }
-
-  // Xóa sản phẩm theo ID
-  async deleteProduct(id) {
-    return await Product.findByIdAndDelete(id); // Xóa sản phẩm
-  }
+  
+  async updateProduct(_id, data) {
+    try {
+        const result = await Product.findByIdAndUpdate(_id, data, { new: true }); // Cập nhật theo `_id`
+        if (!result) {
+            throw new Error("Product not found"); 
+        }
+        return result;
+    } catch (error) {
+        throw new Error(error.message || "Error updating product");
+    }
 }
 
-// Xuất đối tượng ProductService
+
+  
+  async deleteProduct(_id) {
+    try {
+        const result = await Product.findByIdAndDelete(_id); 
+        if (!result) {
+            throw new Error("Product not found"); 
+        }
+        return { message: "Product deleted successfully!" };
+    } catch (error) {
+        throw new Error(error.message || "Error deleting product");
+    }
+}
+
+}
+// const deleteProduct = async (req, res) => {
+//   try {
+//       const id = req.params.id; // Lấy id từ URL
+//       const result = await Product.deleteOne({ id: Number(id) }); // Xóa theo `id`
+//       if (result.deletedCount === 0) {
+//           return res.status(404).json({ message: "Product not found" });
+//       }
+//       res.status(200).json({ message: "Product deleted successfully!" });
+//   } catch (error) {
+//       console.error("Error deleting product:", error);
+//       res.status(500).json({ message: "Error deleting product" });
+//   }
+// };
+
+
 module.exports = new ProductService();

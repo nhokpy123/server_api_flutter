@@ -2,10 +2,10 @@ const multer = require("multer");
 const path = require("path");
 
 
-// Import multer config
+
 const multerConfig = require("../utils/multerConfig");
 
-// Middleware multer
+
 const upload = multer(multerConfig).single("image");
 
 const uploadFile = (req) => {

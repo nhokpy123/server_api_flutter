@@ -7,10 +7,10 @@ const connectDB = async () => {
           useNewUrlParser: true,
           useUnifiedTopology: true,
       });
-      console.log('Connected to MongoDB');
+      console.log('database ngon');
   } catch (err) {
-      console.error('Could not connect to MongoDB:', err.message);
-      process.exit(1); // Dừng ứng dụng nếu không thể kết nối
+      console.error('database lỏ:', err.message);
+      process.exit(1); 
   }
 };
 

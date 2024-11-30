@@ -8,19 +8,19 @@ const ProductController = require('../controllers/productController');
 // router.get('/popularrr', productController.getPopulartions);
 
 //api
-// Create a product
+// tao
 router.post('/createpopular', ProductController.createProduct);
 
-// Get all products
+// lay all
 router.get('/allpopular', ProductController.getAllProducts);
 
-// Get product by ID
+// lay theo id
 router.get('/getbyidpopular/:id', ProductController.getProductById);
 
-// Update a product
+// sua theo _id
 router.put('/updatebyidpopular/:id', ProductController.updateProduct);
 
-// Delete a product
+// xoa theo _id
 router.delete('/deletepopular/:id', ProductController.deleteProduct);
 
 module.exports = router;
